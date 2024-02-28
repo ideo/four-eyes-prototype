@@ -1,8 +1,4 @@
 import streamlit as st
-import pytesseract
-from pytesseract import Output
-from PIL import Image
-import cv2
 
 from app import logic as lg
 from app import image_processing as image
@@ -10,7 +6,7 @@ from app.horoscope import horoscope
 
 
 st.set_page_config(
-    page_title="HoroLens",
+    page_title="AstroLens",
     page_icon="👓"
 )
 

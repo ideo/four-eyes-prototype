@@ -1,12 +1,10 @@
 import re
 from itertools import chain
 from datetime import datetime
-# from collections import Counter
 
 import cv2
 from PIL import Image
 import pytesseract as tesseract
-# from pytesseract import Output
 import numpy as np
 import inflect
 

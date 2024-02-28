@@ -1,6 +1,5 @@
 from pathlib import Path
 import random
-from datetime import datetime
 
 import yaml
 from yaml.loader import SafeLoader

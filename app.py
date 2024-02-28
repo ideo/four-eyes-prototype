@@ -18,7 +18,8 @@ lg.initialize_session_state()
 
 
 st.title("AstroLens")
-picture = st.camera_input("Take a Picture")
+label = "Take a picture of your ID. Make sure your birthday clearly visible."
+picture = st.camera_input(label)
 
 if picture:
     text = image.extract_text_from_image(picture)

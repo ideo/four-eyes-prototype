@@ -1,0 +1,4 @@
+model: "gpt-4"
+
+prompts:
+  - My birthday is on BIRTHDAY. Please write me a horoscope that includes many details about the new glasses I just purchased. Please make it silly.

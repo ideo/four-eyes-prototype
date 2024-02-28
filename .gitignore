@@ -1,0 +1,5 @@
+.python-version
+.env
+data/
+scraper.py
+__pycache__/

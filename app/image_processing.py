@@ -36,9 +36,13 @@ def recognize_dates(text):
 
 
 def extract_likely_birthday(dates):
-    month_days = [(dt.split("/")[0], dt.split("/")[1]) for dt in dates]
-    month, day = max(month_days, key=month_days.count)
-    month, day = int(month), int(day)
-    birthday = datetime(year=2000, month=month, day=day).strftime("%B")
-    birthday += f" {ENGINE.ordinal(day)}"
-    return birthday
+    try:
+        month_days = [(dt.split("/")[0], dt.split("/")[1]) for dt in dates]
+        month, day = max(month_days, key=month_days.count)
+        month, day = int(month), int(day)
+        birthday = datetime(year=2000, month=month, day=day).strftime("%B")
+        birthday += f" {ENGINE.ordinal(day)}"
+        return birthday
+    
+    except ValueError:
+        return None

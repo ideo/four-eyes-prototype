@@ -32,7 +32,13 @@ if picture:
 
     dates = image.recognize_dates(text)
     birthday = image.extract_likely_birthday(dates)
-    st.header(birthday)
-    with st.spinner("Reading the stars..."):
-        response = horoscope(birthday)
-        st.write(response.content)
+
+    if birthday is not None:
+        st.header(birthday)
+        with st.spinner("Reading the stars..."):
+            response = horoscope(birthday)
+            st.write(response.content)
+
+    else:
+        picture = None
+        st.success("Oh no! I can't find your birthday. Please take a new picture.")

@@ -1,5 +1,6 @@
 model: "gpt-4"
 
 prompts:
-  # - My birthday is on BIRTHDAY. Please write me a horoscope that includes many details about the new glasses I just purchased. Please make it silly.
-  - Please write me a one to two paragraph horoscope based on my brithday, which is BIRTHDAY. I would like the horoscope to be glasses-themed. Please feel free to make it silly. Also, please do not mention any actual glasses brands.
+  - Please write me a one paragraph horoscope based on my brithday, which is BIRTHDAY. I would like the horoscope to be glasses-themed. Please feel free to make it silly. Also, please do not mention any actual glasses brands.
+  # - Please write me a one paragraph horoscope based on my brithday, which is BIRTHDAY. I would like the horoscope to be glasses-themed. Also, please do not mention any actual glasses brands.
+  - Please write me a three sentence horoscope based on my brithday, which is BIRTHDAY. The horoscope must include a prediction one something that will happen to me. I would like the horoscope to be glasses-themed. Please do not mention any actual glasses brands.

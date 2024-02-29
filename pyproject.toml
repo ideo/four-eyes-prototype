@@ -24,6 +24,7 @@ watchdog = "^4.0.0"
 [tool.poetry.group.scraper.dependencies]
 requests = "^2.31.0"
 beautifulsoup4 = "^4.12.3"
+tqdm = "^4.66.2"
 
 [build-system]
 requires = ["poetry-core"]

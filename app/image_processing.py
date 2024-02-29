@@ -40,7 +40,7 @@ def extract_likely_birthday(dates):
         month, day = int(month), int(day)
         birthday = datetime(year=2000, month=month, day=day).strftime("%B")
         birthday += f" {ENGINE.ordinal(day)}"
-        return birthday
+        return month, day, birthday
     
     except ValueError:
-        return None
+        return None, None, None

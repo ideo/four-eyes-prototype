@@ -23,19 +23,24 @@ if picture is None:
 if picture:
     text = image.extract_text_from_image(picture)
     dates = image.recognize_dates(text)
-    birthday = image.extract_likely_birthday(dates)
+    month, day, birthday = image.extract_likely_birthday(dates)
 
     if birthday is not None:
         # st.header(birthday)
 
+        st.write("")
         style_descriptor = lg.choose_your_style()
         
         if style_descriptor is not None:
 
             with st.spinner("Reading the stars..."):
+                st.write("")
                 st.markdown("#### Your AstroLens Horoscope")
                 response = horoscope(birthday, style_descriptor)
                 st.write(response.content)
+
+                st.write("")
+                lg.display_glasses_recommendation(month, day, style_descriptor)
 
     else:
         picture = None

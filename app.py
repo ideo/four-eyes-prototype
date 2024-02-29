@@ -26,11 +26,19 @@ if picture:
     birthday = image.extract_likely_birthday(dates)
 
     if birthday is not None:
-        st.header(birthday)
-        with st.spinner("Reading the stars..."):
-            response = horoscope(birthday)
-            st.write(response.content)
+        # st.header(birthday)
+
+        style_descriptor = lg.choose_your_style()
+        
+        if style_descriptor is not None:
+
+            with st.spinner("Reading the stars..."):
+                st.markdown("#### Your AstroLens Horoscope")
+                response = horoscope(birthday, style_descriptor)
+                st.write(response.content)
 
     else:
         picture = None
         st.warning("Oh no! I can't find your birthday. Please take a new picture.")
+
+

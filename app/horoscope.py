@@ -17,8 +17,8 @@ load_dotenv()
 client = OpenAI()
 
 
-def horoscope(birthday):
-    prompt = generate_prompt(birthday)
+def horoscope(birthday, style_descriptor):
+    prompt = generate_prompt(birthday, style_descriptor)
     model = load_config_file()["model"]
     print(prompt)
     response = client.chat.completions.create(
@@ -29,10 +29,10 @@ def horoscope(birthday):
     return content
 
 
-def generate_prompt(birthday):
+def generate_prompt(birthday, style_descriptor):
     config = load_config_file()
     prompt = random.choice(config["prompts"])
-    prompt = prompt.replace("BIRTHDAY", birthday)
+    prompt = prompt.replace("BIRTHDAY", birthday).replace("STYLE_DESCRIPTOR", style_descriptor)
     return prompt
 
 

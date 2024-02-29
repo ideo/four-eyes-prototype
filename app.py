@@ -14,8 +14,11 @@ lg.initialize_session_state()
 
 
 st.title("AstroLens")
-label = "Take a picture of your ID. Make sure your birthday clearly visible."
+label = "Take a picture of your ID or insurance card. Make sure your birthday clearly visible."
 picture = st.camera_input(label)
+
+if picture is None:
+    st.write("If the photo is too blurry, holding your phone still for a few seconds can help it snap into focus.")
 
 if picture:
     text = image.extract_text_from_image(picture)

@@ -51,7 +51,7 @@ def image_filename_to_sytle_descriptor(filepath):
      filename = basename.split(".")[0]
      
      descriptors = { 
-        "cubism":                   "the cubist art movement",
+        "cubism":                  "the cubist art movement",
         "dali":                    "the painting style of Salvador Dalí",
         "georgia-okeefe":          "the floral landscapes of Georgia O'Keeffe",
         "impressionism":           "the pioneering spirit of impressionist painters",

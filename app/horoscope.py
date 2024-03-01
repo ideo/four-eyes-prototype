@@ -46,18 +46,3 @@ def load_yaml_file(filepath):
     with open(filepath) as file:
         obj = yaml.load(file, Loader=SafeLoader)
     return obj
-
-
-
-
-
-
-# completion = client.chat.completions.create(
-#   model=config["model"],
-#   messages=[
-#     {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
-#     {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
-#   ]
-# )
-
-# print(completion.choices[0].message)

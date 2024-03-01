@@ -50,14 +50,15 @@ def image_filename_to_sytle_descriptor(filepath):
      basename = os.path.basename(filepath)
      filename = basename.split(".")[0]
      
-     descriptors = {
-        "audrey-hepburn-sq":    "Audrey Hepburn in Breakfast at Tiffany's",
-        "barn":                 "rustic, country-style living", 
-        "hiking-couple-sq":     "outdoorsy, crunchy, hiking lifestyle", 
-        "jon-hamm-sq":          "Handsome, well-dressed Jon Hamm",  
-        "lulu-sq":              "sportsy, athletic, athleisure lifestyle",  
-        "rainbow-dash-sq":      "Rainbow Dash from My Little Pony",
-        "spiderman-sq":         "Spiderman", 
+     descriptors = { 
+        "cubism":                   "the cubist art movement",
+        "dali":                    "the painting style of Salvador Dalí",
+        "georgia-okeefe":          "the floral landscapes of Georgia O'Keeffe",
+        "impressionism":           "the pioneering spirit of impressionist painters",
+        "jackson-pollack":         "the vibrant quantities of Jackson Pollack",
+        "modernist-photography":   "modernist architecture",
+        "mondrian":                "regularity and symmetry of Modrian-eque paintings",
+        "romanticism":             "the classicism and timelessness of romantic paintings",
         }
      style = descriptors[filename]
      return style
@@ -70,10 +71,17 @@ def display_glasses_recommendation(month, day, style_descriptor):
     if not isinstance(filename, str):
         glasses = os.listdir(glasses_dir)
         glasses = [fp for fp in glasses if fp.split(".")[-1] == "png"]
-        st.session_state["recommendation"][style_descriptor][month][day] = random.choice(glasses)
+        st.session_state["recommendation"][style_descriptor][month][day] = random.sample(glasses, 4)
     
     st.markdown("#### Your Recommended Frames")
-    filename = st.session_state["recommendation"][style_descriptor][month][day]
-    filepath = glasses_dir / filename
-    st.image(str(filepath))
+    filenames = st.session_state["recommendation"][style_descriptor][month][day]
+    filepath = lambda fn: str(glasses_dir / fn)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image(filepath(filenames[0]))
+        st.image(filepath(filenames[1]))
+    with col2:
+        st.image(filepath(filenames[2]))
+        st.image(filepath(filenames[3]))
 

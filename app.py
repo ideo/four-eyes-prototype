@@ -25,6 +25,10 @@ if picture:
     dates = image.recognize_dates(text)
     month, day, birthday = image.extract_likely_birthday(dates)
 
+    if birthday is None:
+        st.warning("Oh no! I can't find your birthday. Please take a new picture, or input your birthday below.")
+        month, day, birthday = lg.backup_birthday_selector()
+
     if birthday is not None:
         # st.header(birthday)
 
@@ -44,6 +48,6 @@ if picture:
 
     else:
         picture = None
-        st.warning("Oh no! I can't find your birthday. Please take a new picture.")
+        
 
 

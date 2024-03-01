@@ -6,6 +6,7 @@ import streamlit as st
 from streamlit_image_select import image_select
 
 from .horoscope import REPO_ROOT_DIR
+from .image_processing import extract_likely_birthday
 
 
 def initialize_session_state():
@@ -20,16 +21,31 @@ def initialize_session_state():
             st.session_state[obj] = value
 
 
+def backup_birthday_selector():
+    col1, col2 = st.columns(2)
+    with col1:
+        month = st.selectbox("Month", options=[""] + list(range(1,13)))
+        month = month if month != "" else None
+    with col2:
+        day = st.selectbox("Day", options=[""] + list(range(1,32)))
+        day = day if day != "" else None
+
+    birthday = None
+    if month is not None and day is not None:
+        month, day, birthday = extract_likely_birthday([f"{month}/{day}/2024"])
+        print(birthday)
+
+    return month, day, birthday
+
+
 def recursive_default_dict():
     return defaultdict(recursive_default_dict)
-
 
 
 def randomly_select_images():
         filepath = REPO_ROOT_DIR / "img"
         img_fps = os.listdir(filepath)
-        exts = ["jpeg", "png"]
-        img_fps = [filepath/fn for fn in img_fps if fn.split(".")[-1] in exts]
+        img_fps = [filepath/fn for fn in img_fps if fn.split(".")[-1] != "DS_Store"]
         img_fps = random.sample(img_fps, 4)
         st.session_state["image_filepaths"] = img_fps
 
